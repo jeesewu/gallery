@@ -2,9 +2,10 @@ import React from "react";
 import axios from "axios";
 
 import SearchBar from "./SearchBar";
+import ImageList from "./ImageList";
 
 class App extends React.Component {
-  state = { image: "" };
+  state = { images: [] };
 
   handleSearch = (term) => {
     axios
@@ -16,7 +17,7 @@ class App extends React.Component {
         },
       })
       .then((response) => {
-        this.setState({ image: response.data.results[0].urls.regular });
+        this.setState({ images: response.data.results });
       });
   };
 
@@ -24,7 +25,7 @@ class App extends React.Component {
     return (
       <div>
         <SearchBar onSearch={this.handleSearch} />
-        <img src={this.state.image} />
+        <ImageList images={this.state.images} />
       </div>
     );
   }
