@@ -1,13 +1,15 @@
 import React from "react";
 import axios from "axios";
 
+import SearchBar from "./SearchBar";
+
 class App extends React.Component {
   state = { image: "" };
 
-  componentDidMount() {
+  handleSearch = (term) => {
     axios
       .get("https://api.unsplash.com/search/photos", {
-        params: { query: "car" },
+        params: { query: term },
         headers: {
           Authorization:
             "Client-ID Avn2ZNay081eKMhdlL_PcBu5iWvnla44llzOWRgZll8",
@@ -16,12 +18,13 @@ class App extends React.Component {
       .then((response) => {
         this.setState({ image: response.data.results[0].urls.regular });
       });
-  }
+  };
 
   render() {
     return (
       <div>
-        <img src={this.state.image} alt="car" />
+        <SearchBar onSearch={this.handleSearch} />
+        <img src={this.state.image} />
       </div>
     );
   }
