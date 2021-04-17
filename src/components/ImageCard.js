@@ -1,7 +1,14 @@
 import React from "react";
 
 const ImageCard = (props) => {
-  return <img src={props.url} alt={props.alt} />;
+  return (
+    <img
+      className="ui rounded image"
+      style={{ marginTop: "10px" }}
+      src={props.url}
+      alt={props.alt}
+    />
+  );
 };
 
 export default ImageCard;
