@@ -23,7 +23,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar onSearch={this.handleSearch} />
         <ImageList images={this.state.images} />
       </div>
